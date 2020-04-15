@@ -1,0 +1,10 @@
+
+
+# for R packages
+inst/doc
+
+# sublime workspaces
+*.sublime-workspace 
+
+
+

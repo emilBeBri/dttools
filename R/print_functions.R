@@ -1,0 +1,24 @@
+
+#' @export
+# write to clip
+wc <- function(df1, var, n=10,all=FALSE, sample=TRUE) {
+  # require(clipr)
+  if(all==TRUE) n <- nrow(df1)
+
+  if(sample==TRUE) {
+    clipr::write_clip(
+    df1[seq(1,nrow(df1),ceiling((nrow(df1)/n))), get(var)]
+    , col.names=F)
+  } else clipr::write_clip(df1[1:n, get(var)] , col.names=F)
+}
+
+
+# åbn i r viewer
+#' @export
+v <- function(DT, all=FALSE, n=1000) {
+  # DT= 1:5
+  if(is.data.frame(DT)==FALSE) DT <- data.frame(DT)
+  if(nrow(DT)<n) n <- nrow(DT)
+  if(all==FALSE) utils::View(DT[1:n,]) else utils::View(DT)
+}
+

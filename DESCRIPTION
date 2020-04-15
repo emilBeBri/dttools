@@ -1,0 +1,26 @@
+Package: dttools
+Title: Useful Tools Built Around Data.table
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Emil",
+           family = "Begtrup-Bright",
+           role = c("aut", "cre"),
+           email = "emil.bb@gmail.com",
+           comment = c(ORCID = "0000-0002-5475-4057"))
+Description: useful tools built around data.table.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: knitr
+RoxygenNote: 7.1.0
+Imports: 
+		data.table (>= 1.9.8),
+		clipr,
+    assertthat,
+    openxlsx,
+    readxl
+Depends: R (>= 3.5.0) 
