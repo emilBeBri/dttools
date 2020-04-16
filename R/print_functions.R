@@ -1,16 +1,17 @@
 
-#' @export
-# write to clip
-wc <- function(df1, var, n=10,all=FALSE, sample=TRUE) {
-  # require(clipr)
-  if(all==TRUE) n <- nrow(df1)
+# ikke så vigtig lige nu - skriv til clipboard
+# #' @export
+# # write to clip manager
+# wc <- function(df1, var, n=10,all=FALSE, sample=TRUE) {
+#   # require(clipr)
+#   if(all==TRUE) n <- nrow(df1)
 
-  if(sample==TRUE) {
-    clipr::write_clip(
-    df1[seq(1,nrow(df1),ceiling((nrow(df1)/n))), get(var)]
-    , col.names=F)
-  } else clipr::write_clip(df1[1:n, get(var)] , col.names=F)
-}
+#   if(sample==TRUE) {
+#     clipr::write_clip(
+#     df1[seq(1,nrow(df1),ceiling((nrow(df1)/n))), get(var)]
+#     , col.names=F)
+#   } else clipr::write_clip(df1[1:n, get(var)] , col.names=F)
+# }
 
 
 # åbn i r viewer

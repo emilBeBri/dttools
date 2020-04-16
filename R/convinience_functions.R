@@ -23,6 +23,8 @@ all.equalcn <- function(x,y) all.equal(colnames(x),colnames(y))
 #' @export
 intersectcn <- function(x,y) intersect(colnames(x),colnames(y))
 
+
+
 #' @export
 p <- function(df1, n=40){
   print(df1,topn=n)
@@ -82,3 +84,33 @@ lu <- function(x) {
 l.f <- function(x) {
   list.files(x)
 }
+
+
+
+
+##############  #afsnit #################
+# functions that needs more explaining
+#########################################
+
+
+#' are all rows unique, TRUE/FALSE
+#'
+#' are all rows unique, TRUE/FALSE. 
+#'
+#' are all rows unique, TRUE/FALSE
+#' @param DT a data.frame
+#' @import data.table 
+#' @export
+#'
+#'
+#'
+#' @return This function returns a \code{logical value} TRUE if all rows are unique, FALSE if they are not. ...  is passed on to uniqueN from data.table, where the columns to check uniqueness to can be supplied as well. 
+
+# Are all rows unique TRUE/FALSE. all arguments passed to data.tables uniqueN().
+uniqueA <- function(DT, ...) {
+    # require(data.table)
+  data.table::uniqueN(DT, ...) == nrow(DT)  
+}
+
+
+

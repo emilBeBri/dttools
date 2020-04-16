@@ -43,7 +43,7 @@ v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE) {
   if(all==TRUE & sample==TRUE) stop('du kan ikke *baade* sample *og* tage alle med')
   if(all == FALSE & nrow(data) > n){
     mister <-  nrow(data) - n
-    warning('der er flere rows end n er sat til - hvis du gemmer data og arbejde videre med det, HUSK at sæt all=TRUE, ellers mister du ', f(mister), ' rækker')
+    warning('der er flere rows end n er sat til - hvis du gemmer data og arbejde videre med det, HUSK at saet all=TRUE, ellers mister du ', f(mister), ' raekker')
   } 
 
   # data
@@ -79,8 +79,6 @@ v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE) {
 #   system(open_command,' ',temp_file))
 
 # system("xdg-open /tmp/Rtmp6iWjEe/file63f27073576e.xlsx")
-
-
 
   # f_output <- data.frame(unclass(readxl::read_xlsx(temp_file)), check.names = FALSE) # data.frame (base-r)
   # f_output <- readxl::read_xlsx(temp_file) # tibble (ellers tak)

@@ -11,9 +11,9 @@ colc(DT, x = NA, not = NA, plus = NA, ignore.case = TRUE)
 
 \item{x}{a regex to search for in DT}
 
-\item{not}{a regex that will exclude these from argument x}
+\item{not}{a regex that will exclude these from argument x. Note that this uses grepl, and since grepl is not vectorized, if several elements are supplied, they are stringed together with '|' in grepl.}
 
-\item{plus}{a charactervector with specific names that will be included in the output}
+\item{plus}{a character vector with specific elements from the string that will be included}
 
 \item{ignore.case}{should cases be ignored? Default is TRUE}
 }
@@ -21,7 +21,7 @@ colc(DT, x = NA, not = NA, plus = NA, ignore.case = TRUE)
 This function returns a \code{character vector} that matches the regex search pattern
 }
 \description{
-regex a vector or columnnames of data.frame and return only the matches with the regex
+regex a vector or columnnames of data.frame and return only the matches with the rege.
 }
 \details{
 regex a vector or columnnames of data.frame and return only the matches with the regex
