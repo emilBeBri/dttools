@@ -16,6 +16,7 @@ pct <- function(df, decimals=2) {
 
 #' @export
 #formatér for at øge læsbarheden
+# tidligere hed den bare f() - det er uhensigtsmæssigt
 f_pct <- function(df, decimals=2) {
   format(round(df*100,decimals) %+% ' %',big.mark='.', decimal.mark=',')
 }

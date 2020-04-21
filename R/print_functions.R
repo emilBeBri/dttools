@@ -17,9 +17,12 @@
 # åbn i r viewer
 #' @export
 v <- function(DT, all=FALSE, n=1000) {
+	# if a variable in the DT is already called n, there will be a problem. so let's rename n right away
+	n_number <- n 
+	n <- NULL
   # DT= 1:5
   if(is.data.frame(DT)==FALSE) DT <- data.frame(DT)
-  if(nrow(DT)<n) n <- nrow(DT)
-  if(all==FALSE) utils::View(DT[1:n,]) else utils::View(DT)
+  if(nrow(DT)<n_number) n_number <- nrow(DT)
+  if(all==FALSE) utils::View(DT[1:n_number,]) else utils::View(DT)
 }
 
