@@ -4,13 +4,11 @@
 \name{dupstestdata}
 \alias{dupstestdata}
 \title{Random Duplicated Data}
-\format{
-A data frame of 7 rows and 3 columns
+\format{A data frame of 7 rows and 3 columns
 \describe{
  \item{id}{just random ID}
  \item{var1}{random numbers, some of them dups}
-}
-}
+}}
 \source{
 Randomly generated data
 }

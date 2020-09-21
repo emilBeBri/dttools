@@ -25,8 +25,15 @@ f_pct <- function(df, decimals=2) {
 #' @export
 # numre i EU-format
 eu_format <- function(x) trimws(format(x, big.mark='.',decimal.mark=',', scientific=FALSE))
-# til eyeballing - brug ALDRIG i bestandig kode!!
+
+#' @export
+# til eyeballing, samme som ovenstående - brug ALDRIG i bestandig kode!!
 f <- function(x) trimws(format(x, big.mark='.',decimal.mark=',', scientific=FALSE))
+
+#' @export
+# til eyeballing, samme som ovenstående - brug ALDRIG i bestandig kode!!
+f_sum <- function(x) trimws(format(sum(x), big.mark='.',decimal.mark=',', scientific=FALSE))
+
 
 #' @export
 # numre med kr bag på

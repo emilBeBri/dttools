@@ -25,7 +25,7 @@
 
 # se i excel ark
 v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE) {
-  #til test
+  # test
   # filter <- TRUE
   # table <- TRUE
   # data <- t1
@@ -33,7 +33,7 @@ v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE) {
   # sample <- FALSE
   # n <- 9000
 
-  # hvis vektor
+  # check if vector
   if(is.vector(data)==TRUE & is.data.frame(data)==FALSE) {
   data <- data.table::data.table(data)
   }  
@@ -43,7 +43,7 @@ v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE) {
   if(all==TRUE & sample==TRUE) stop('du kan ikke *baade* sample *og* tage alle med')
   if(all == FALSE & nrow(data) > n){
     mister <-  nrow(data) - n
-    warning('der er flere rows end n er sat til - hvis du gemmer data og arbejde videre med det, HUSK at saet all=TRUE, ellers mister du ', f(mister), ' raekker')
+    warning('der er flere rows end n er sat til - hvis du gemmer data og arbejde videre med det, HUSK at saet all=TRUE, ellers mister du ', dttools::eu_format(mister), ' raekker')
   } 
 
   # data

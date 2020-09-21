@@ -1,6 +1,6 @@
 Package: dttools
 Title: Useful Tools Built Around Data.table
-Version: 0.0.0.9001
+Version: 0.0.0.9003
 Authors@R: 
     person(given = "Emil",
            family = "Begtrup-Bright",
@@ -21,6 +21,9 @@ Imports:
 		data.table (>= 1.9.8),
 		clipr,
     assertthat,
+    ggplot2,
     openxlsx,
-    readxl
+    readxl,
+    grid,
+    pkgbuild
 Depends: R (>= 3.5.0) 

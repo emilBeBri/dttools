@@ -19,6 +19,3 @@ read all excel sheets
 
 read all excel sheets
 }
-\seealso{
-\code{\link{ez.nan2na}}
-}
