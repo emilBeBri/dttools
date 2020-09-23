@@ -5,39 +5,30 @@
 #' do different stuff, yes, that's what happens!
 #' @param DT a data.table with suspcted dups
 #' @param by the columns by which the dups should be detected
-#' @param index if TRUE, the indices are returned instead of the rows of the DT with dups.
+#' @param var should the output be a variabel that designates duplicates (TRUE) / unique(FALSE). If set, the function does NOT return an output, but modifices the data.table by reference and adds the variabel
 #' @import data.table 
+#' @importFrom utils tail
 #' @export
-#'
-#'
 #'
 #' @examples
 #' dups(dupstestdata)
-#' dups(dupstestdata, index = TRUE)
-#' @return This function returns a \code{data.table} with all the dups by the specified columns, instead of 'all the dups minus one' as is standard in data.table
+#' @return This function returns a \code{data.table} with all the dups by the specified columns, instead of 'all the dups minus one' as is standard in data.table. also sets the key to the "by" variables for code efficiency.
 
 # alle dups, ikke kun de næste-efter-den-første
-dups <- function(DT, by=colnames(DT), index=FALSE) {
-    # DT <- a1
-    # by <- colnames(DT)
-  nmax <- NULL
+dups <- function(DT, by=colnames(DT), var=NULL) {
+    # DT <- myDT
+    # by=c('fB', 'fC')
   if(!is.data.table(DT)) {
     data.table::setDT(DT)
     warning('DT wasn\'t a data.table - turning it into one')
   }
-  dup_index <-  sort(unique(c(
-  which(duplicated(DT, by=by)),
-  which(duplicated(DT, by=by, fromLast=T))
-  )))
-  if(index==TRUE) return(dup_index)
-  if(index==FALSE) {
-    DT1 <- DT[dup_index]
-    DT1[, nmax := 1:.N, by=c(colnames(DT1))]
-    data.table::setorderv(DT1, c(colnames(DT), 'nmax'))
-    return(DT1[])
-  }
+  # beholder evt den gamle sortering hvis der er én (maaske ikke noedvendigt)
+  # if( !is.null(key(DT)) ) {old_key <- key(DT)}
+  #
+  setkeyv(DT, by)
+  tmp_dups = duplicated(DT, by = key(DT)) 
+  if( is.null(var)) DT[tmp_dups | c(tail(tmp_dups, -1L), FALSE)] else DT[, c(var) := FALSE][tmp_dups | c(tail(tmp_dups, -1L), FALSE), c(var) := TRUE]
 }
-
 
 
 

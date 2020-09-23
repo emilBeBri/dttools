@@ -4,17 +4,17 @@
 \alias{dups}
 \title{find dups in different ways}
 \usage{
-dups(DT, by = colnames(DT), index = FALSE)
+dups(DT, by = colnames(DT), var = NULL)
 }
 \arguments{
 \item{DT}{a data.table with suspcted dups}
 
 \item{by}{the columns by which the dups should be detected}
 
-\item{index}{if TRUE, the indices are returned instead of the rows of the DT with dups.}
+\item{var}{should the output be a variabel that designates duplicates (TRUE) / unique(FALSE). If set, the function does NOT return an output, but modifices the data.table by reference and adds the variabel}
 }
 \value{
-This function returns a \code{data.table} with all the dups by the specified columns, instead of 'all the dups minus one' as is standard in data.table
+This function returns a \code{data.table} with all the dups by the specified columns, instead of 'all the dups minus one' as is standard in data.table. also sets the key to the "by" variables for code efficiency.
 }
 \description{
 these functions adds functionality lacking in data.table and other packages that are concerned with dups
@@ -24,5 +24,4 @@ do different stuff, yes, that's what happens!
 }
 \examples{
 dups(dupstestdata)
-dups(dupstestdata, index = TRUE)
 }
