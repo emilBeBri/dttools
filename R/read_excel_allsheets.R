@@ -2,7 +2,6 @@
 #' read all excel sheets
 #' @description read all excel sheets
 #' 
-#' @description read all excel sheets
 #' @param filename location of the excel file
 #' @param na.strings case sensitive strings that will be coverted to NA. The function will do a trimws(x,'both') before conversion. If NULL, do only trimws, no conversion to NA.
 #' @import data.table 

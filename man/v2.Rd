@@ -4,7 +4,15 @@
 \alias{v2}
 \title{opens data in spreadsheet program}
 \usage{
-v2(data, filter = TRUE, table = TRUE, n = 9000, all = FALSE, sample = FALSE)
+v2(
+  data,
+  filter = TRUE,
+  table = TRUE,
+  n = 9000,
+  all = FALSE,
+  sample = FALSE,
+  engine = "writexl"
+)
 }
 \arguments{
 \item{data}{a data.frame}

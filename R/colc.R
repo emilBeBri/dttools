@@ -25,7 +25,7 @@ colc <- function(DT, x=NA, not=NA, plus=NA, ignore.case=TRUE) {
     # plus <- c('a','x')
     # ignore.case <- TRUE
 
-  # hvis x (search string) er en vector (fx input er colnames), lav til "or" statement i regex, så den søger på det hele
+  # hvis x (search string) er en vector (fx input er colnames), lav til "or" statement i regex, saa den soeger paa det hele
   if( length(x) > 1 ) {
     x <- paste(x, collapse='|')
     warning('search string var en vector > 1. collapser den med paste')
@@ -51,14 +51,14 @@ colc <- function(DT, x=NA, not=NA, plus=NA, ignore.case=TRUE) {
     }
   }
 
-  # kun sorteres hvis det er et underudvalg af cols og ikke alle cols, for så bliver de ændret i rækkefølgen når du bruger dem til at udvælge i en DT 
+  # kun sorteres hvis det er et underudvalg af cols og ikke alle cols, for saa bliver de ændret i rækkefoelgen naar du bruger dem til at udvælge i en DT 
   if( !is.na(x)) x1 <- sort(x1) 
 
   if( any(!is.na(plus))) {
     # errorcheck: 'plus' needs to be in the search_vector, if not      
     if( any(plus %nin% search_vector)){
       error_out <- setdiff(plus, search_vector)
-      stop('some element(s) not are plus, these are: ', error_out)
+      stop('some element(s) in plus are not in the vetor: ', error_out)
     } 
     x1 <- c(plus,x1)
   }  

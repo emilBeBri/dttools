@@ -20,6 +20,7 @@
 	# taget herfra:
 	# https://guillaumepressiat.github.io//blog/2019/01/stringfix
 
+
 #' @export
 # not chin (fra data.table)
 `%nchin%` <- Negate(data.table::`%chin%`)
@@ -28,3 +29,6 @@
 #' @export
 `%nbetween%` <- Negate(`%between%`)
 
+
+#' @export
+`%agrepl%` <- function(x,y) agrepl(y, x, ignore.case=TRUE)

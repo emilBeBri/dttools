@@ -59,5 +59,5 @@ github_installer <- function(url=NULL, ... ) {
 
 
 # to-do: 
-# lav den evt så den kan bruges til gamle versioner af pakker også, der ligger på git
+# lav den evt saa den kan bruges til gamle versioner af pakker ogsaa, der ligger paa git
 

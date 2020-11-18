@@ -18,7 +18,7 @@ theme_bb <- function() {
 #' @import ggplot2 
 #' @import grid 
 #' @export
-#  Map theme - from K Healeys book (NB! hed før bare theme_map, men vil helst ikke i konflikt med andre pakker der hedder det)
+#  Map theme - from K Healeys book (NB! hed foer bare theme_map, men vil helst ikke i konflikt med andre pakker der hedder det)
 theme_map_healy <- function(base_size=9, base_family="") {
     ggplot2::theme(base_size=base_size, base_family=base_family) %+replace%
         ggplot2::theme(axis.line=element_blank(),

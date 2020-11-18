@@ -14,7 +14,11 @@
 #' dups(dupstestdata)
 #' @return This function returns a \code{data.table} with all the dups by the specified columns, instead of 'all the dups minus one' as is standard in data.table. also sets the key to the "by" variables for code efficiency.
 
-# alle dups, ikke kun de næste-efter-den-første
+# kunne evt laves med: 
+# dtxc2 <- dtxc1[, if(.N == 1) .SD, by=person_id]
+# koer benchmark paa den og se om det ikke er bedre? #todo#
+
+# alle dups, ikke kun de naeste-efter-den-foerste
 dups <- function(DT, by=colnames(DT), var=NULL) {
     # DT <- myDT
     # by=c('fB', 'fC')
@@ -27,8 +31,13 @@ dups <- function(DT, by=colnames(DT), var=NULL) {
   #
   setkeyv(DT, by)
   tmp_dups = duplicated(DT, by = key(DT)) 
-  if( is.null(var)) DT[tmp_dups | c(tail(tmp_dups, -1L), FALSE)] else DT[, c(var) := FALSE][tmp_dups | c(tail(tmp_dups, -1L), FALSE), c(var) := TRUE]
+  if( is.null(var)){
+    DT[tmp_dups | c(tail(tmp_dups, -1L), FALSE)]
+  }  else{
+    DT %>%  
+    .[, c(var) := FALSE] %>%  
+    .[tmp_dups | c(tail(tmp_dups, -1L), FALSE), c(var) := TRUE]
+  }
 }
-
 
 

@@ -16,6 +16,4 @@ Returns a vector trimws (always for factor, character) and NA converted (if matc
 }
 \description{
 read all excel sheets
-
-read all excel sheets
 }

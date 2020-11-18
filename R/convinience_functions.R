@@ -1,4 +1,4 @@
-#' convinience funktioner, kræver ikke rigtig dokumentation
+#' convinience funktioner, kraever ikke rigtig dokumentation
 
 #' @export
 # NA fjernes automatisk
@@ -8,10 +8,10 @@ esum <- function(x, ...) round(sum(x,na.rm=TRUE), ...)
 emean <- function(x, ...) round(mean(x,na.rm=TRUE), ...)
 
 #' @export
-# vend om på x og y i setdiff
+# vend om paa x og y i setdiff
 setdiff2 <- function(x,y, ...) setdiff(y,x, ...)
 
-# colnames på sets
+# colnames paa sets
 #' @export
 setdiffcn <- function(x,y) setdiff(colnames(x),colnames(y))
 #' @export
@@ -48,6 +48,34 @@ nc <- function(df) {
 nr <- function(df) {
   nrow(df)
 }
+
+#' nrows for one data.frame minus the nrows of another data.frame 
+#'
+#' that's about it
+#'
+#' not sure about this right here
+#' @param dtx A data.frame
+#' @param dty A data.frame
+#' @export
+#'
+#' @examples
+#'\dontrun{
+#' nr2(dtx, dtx)
+#' }
+#' @return This function returns an \code{integer} value with the difference in number of rows between the two data.frames (dtx-dty)  
+#' 
+nr2 <- function(dtx, dty, mode='-') {
+  if(mode=='-') return(nrow(dtx) - nrow(dty) )
+  if(mode=='+') return(nrow(dtx) + nrow(dty) )
+}
+
+
+# sammenlign antal raekker i to DTs
+nrc <- function(DT1, DT2) {
+  f(nrow(DT1) - nrow(DT2))
+}
+
+
 
 #' @export
 cn <- function(df) {

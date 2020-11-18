@@ -2,10 +2,10 @@
 % Please edit documentation in R/convinience_functions.R
 \name{esum}
 \alias{esum}
-\title{convinience funktioner, kræver ikke rigtig dokumentation}
+\title{convinience funktioner, kraever ikke rigtig dokumentation}
 \usage{
 esum(x, ...)
 }
 \description{
-convinience funktioner, kræver ikke rigtig dokumentation
+convinience funktioner, kraever ikke rigtig dokumentation
 }

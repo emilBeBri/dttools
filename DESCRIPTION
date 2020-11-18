@@ -1,6 +1,6 @@
 Package: dttools
 Title: Useful Tools Built Around Data.table
-Version: 0.0.0.9004
+Version: 0.0.1.0000
 Authors@R: 
     person(given = "Emil",
            family = "Begtrup-Bright",
@@ -16,14 +16,23 @@ Suggests:
     rmarkdown,
     testthat
 VignetteBuilder: knitr
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Imports: 
-		data.table (>= 1.9.8),
-		clipr,
+    clipr,
+    data.table (>= 1.9.8),
     assertthat,
+    fst,
     ggplot2,
-    openxlsx,
-    readxl,
     grid,
-    pkgbuild
+    magrittr,
+    lubridate,
+    openxlsx,
+    pkgbuild,
+    purrr,
+    qs,
+    readxl,
+    scales,
+    writexl
 Depends: R (>= 3.5.0) 
+globalVariables(c(":=", "!!", "."))
+
