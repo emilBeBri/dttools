@@ -7,17 +7,18 @@
 github_installer(url = NULL, ...)
 }
 \arguments{
-\item{url}{link to a github r package-}
+\item{url}{link to a github r package}
 }
 \value{
 This function  \code{the url} that was given to it, after it has installed the package
 }
 \description{
 installs a R package from github
-}
-\details{
+
 installs a R package from github
 }
 \examples{
+\dontrun{
 github_installer('emilbebri/dttools')
+}
 }

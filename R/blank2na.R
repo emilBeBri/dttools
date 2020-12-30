@@ -1,6 +1,3 @@
-# sæt alle empty character strings til NA
-  # https://stackoverflow.com/a/53176586/396566
-
 #' Replaces blank-ish elements of a factor or character vector to NA
 #' @description Replaces blank-ish elements of a factor or character vector to NA
 #' @param x a vector of factor or character or any type
@@ -9,6 +6,7 @@
 #' @export
 #' 
 
+  # https://stackoverflow.com/a/53176586/396566
 
 blank2na = function(x,na.strings=c('','.','NA','na','N/A','n/a','NaN','nan')) {
     if (is.factor(x)) {

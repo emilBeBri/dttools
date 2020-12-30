@@ -1,12 +1,11 @@
-
-
 #' find number of dups, 
 #'
-#' here is a long description
+#' @description descriptin 2??
 #'
 #' not sure about this right here
 #' @param DT A data.table
 #' @param by the variables used to identify the dups
+#' @param mode "all" outpus the number of all the dups identified, while "unique" outputs only the number of unique duplicates
 #' @import data.table
 #' @export
 #'
@@ -14,8 +13,10 @@
 #'\dontrun{
 #' dupsN(DT, by='variable1')
 #' }
-#' @return This function returns an \code{integer} value with the number of duplicates 
+#' @return This function returns an \code{integer} value with the number of duplicates in the  
 #' 
+
+# #todo# kunne måske godt optimeres
 dupsN <- function(DT, by=colnames(DT), mode='all') {
     # DT <- a1$both
     # by <- colnames(DT)

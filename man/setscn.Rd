@@ -2,19 +2,23 @@
 % Please edit documentation in R/sets-setscn.R
 \name{setscn}
 \alias{setscn}
-\title{short description 1}
+\title{list of all the possible sets between two vectors of colnames}
 \usage{
 setscn(x, y)
 }
 \arguments{
-\item{argument1}{arg-description}
+\item{x}{the first data.frame}
+
+\item{y}{the second data.frame}
 }
 \value{
-This function returns \code{the url} blah blah blah
+This function returns a \code{list} with the three types of sets: the \code{intersect} between two vectors of colnames, and the sets exclusive for the one or the other vector of colnames.
 }
 \description{
-descriptin 2??
+list of all the possible sets between two vectors
 }
 \examples{
-function(arg1)
+\dontrun{
+sets(arg1)
+}
 }

@@ -26,6 +26,8 @@ v2(
 \item{all}{should all rows be used? if TRUE, overrules the n argument.}
 
 \item{sample}{should the n rows be sampled of taken from the top down?}
+
+\item{engine}{which package should be used for convertion to xlsx? default is readxl. openxlsx has better setup of view options (such as using the excel-table function for autosorting), but in some rare cases it will fail on encoding of characters, deleting all information in the process, with no warning (that I can figure out). So it's not default for that reason, but will probably work fine most of the time. Just be careful about data loss when using it.}
 }
 \value{
 This function opens a \code{data.frame} in a spreadsheet viewer. if asssigned to an object, the data.frame as well as manual changes in the spreadsheet will be saved to that object.
@@ -38,6 +40,6 @@ opens data in spreadsheet program
 }
 \examples{
 \dontrun{
-dat2 <- vi(dupstestdata)
+dat2 <- vi(  dupstestdata)
 }
 }

@@ -2,18 +2,15 @@
 % Please edit documentation in R/memory_usage-.ls.objects.R
 \name{.ls.objects}
 \alias{.ls.objects}
-\title{short description 1}
+\title{Internal function for memory_usage}
 \usage{
 .ls.objects(pos = 1, pattern, n = 10, all = FALSE)
-}
-\arguments{
-\item{argument1}{arg-description}
 }
 \value{
 This function returns \code{the url} blah blah blah
 }
 \description{
-descriptin 2??
+Internal function for memory_usage
 }
 \examples{
 \dontrun{

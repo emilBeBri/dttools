@@ -2,19 +2,23 @@
 % Please edit documentation in R/sets-setscn.R
 \name{sets}
 \alias{sets}
-\title{short description 1}
+\title{list of all the possible sets between two vectors}
 \usage{
 sets(x, y)
 }
 \arguments{
-\item{argument1}{arg-description}
+\item{x}{the first vector}
+
+\item{y}{the second vector}
 }
 \value{
-This function returns \code{the url} blah blah blah
+This function returns a \code{list} with the three types of sets: the \code{intersect} between two vectors, and the sets exclusive for the one or the other vector.
 }
 \description{
-descriptin 2??
+list of all the possible sets between two vectors
 }
 \examples{
-function(arg1)
+\dontrun{
+sets(arg1)
+}
 }

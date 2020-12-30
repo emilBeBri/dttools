@@ -10,14 +10,15 @@ dupsN(DT, by = colnames(DT), mode = "all")
 \item{DT}{A data.table}
 
 \item{by}{the variables used to identify the dups}
+
+\item{mode}{"all" outpus the number of all the dups identified, while "unique" outputs only the number of unique duplicates}
 }
 \value{
-This function returns an \code{integer} value with the number of duplicates
+This function returns an \code{integer} value with the number of duplicates in the
 }
 \description{
-here is a long description
-}
-\details{
+descriptin 2??
+
 not sure about this right here
 }
 \examples{

@@ -2,18 +2,18 @@
 % Please edit documentation in R/colc.R
 \name{colc}
 \alias{colc}
-\title{regex a vector or columnnames of data.frame and return only the matches with the regex}
+\title{search column names based on regex}
 \usage{
 colc(DT, x = NA, not = NA, plus = NA, ignore.case = TRUE)
 }
 \arguments{
-\item{DT}{a character vector. if a data.frame, uses the colnames}
+\item{DT}{a character vector. if a data.frame, uses the colnames() to extract a character vector with the colnames}
 
 \item{x}{a regex to search for in DT}
 
 \item{not}{a regex that will exclude these from argument x. Note that this uses grepl, and since grepl is not vectorized, if several elements are supplied, they are stringed together with '|' in grepl.}
 
-\item{plus}{a character vector with specific elements from the string that will be included}
+\item{plus}{a character vector with specific elements from the string that will be included. the function will trhow an error if these do not exist in the vector.}
 
 \item{ignore.case}{should cases be ignored? Default is TRUE}
 }
@@ -21,11 +21,10 @@ colc(DT, x = NA, not = NA, plus = NA, ignore.case = TRUE)
 This function returns a \code{character vector} that matches the regex search pattern
 }
 \description{
-regex a vector or columnnames of data.frame and return only the matches with the rege.
-}
-\details{
-regex a vector or columnnames of data.frame and return only the matches with the regex
+search column names based on a regex, possibly exclude some elements based on another regex, and include some other elements (not regex but identical). For selection of columns for use in various situations
 }
 \examples{
+\dontrun{
 colc(dupstestdata)
+}
 }

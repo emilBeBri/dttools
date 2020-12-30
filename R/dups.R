@@ -1,6 +1,7 @@
 #' find dups in different ways
 #'
-#' these functions adds functionality lacking in data.table and other packages that are concerned with dups
+#' @description This functions adds functionality lacking in data.table and other packages that are concerned with dups
+#' 
 #'
 #' do different stuff, yes, that's what happens!
 #' @param DT a data.table with suspcted dups
@@ -11,7 +12,9 @@
 #' @export
 #'
 #' @examples
+#'\dontrun{
 #' dups(dupstestdata)
+#' }
 #' @return This function returns a \code{data.table} with all the dups by the specified columns, instead of 'all the dups minus one' as is standard in data.table. also sets the key to the "by" variables for code efficiency.
 
 # kunne evt laves med: 

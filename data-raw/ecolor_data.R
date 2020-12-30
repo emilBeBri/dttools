@@ -159,3 +159,4 @@ ecolor_data[, no_colors := .N, by=.(grp)]
 usethis::use_data(ecolor_data, overwrite = TRUE)
 
 
+

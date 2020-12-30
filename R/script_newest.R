@@ -13,11 +13,10 @@
 #' @export
 
 
-
 script_newest <- function(scriptname, dir='r/', extension='r', path=TRUE, source=TRUE) {  
     # dir <- 'r/'
     # extension <- 'r'
-  # scriptname='data-merge-part1'
+    # scriptname='custom-functions'
   x <- script_management_internal(dir=dir, extension=extension)
   x1 <- x[grepl(scriptname, family, ignore.case=TRUE)]
 

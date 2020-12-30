@@ -1,12 +1,14 @@
 #' installs a R package from github
 #'
+#' @description installs a R package from github
+#' 
 #' installs a R package from github
-#'
-#' installs a R package from github
-#' @param url link to a github r package- 
+#' @param url link to a github r package
 #'
 #' @examples
+#'\dontrun{
 #' github_installer('emilbebri/dttools')
+#' }
 #' @return This function  \code{the url} that was given to it, after it has installed the package
 #' @importFrom pkgbuild build
 #' @importFrom utils install.packages

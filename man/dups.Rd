@@ -17,11 +17,13 @@ dups(DT, by = colnames(DT), var = NULL)
 This function returns a \code{data.table} with all the dups by the specified columns, instead of 'all the dups minus one' as is standard in data.table. also sets the key to the "by" variables for code efficiency.
 }
 \description{
-these functions adds functionality lacking in data.table and other packages that are concerned with dups
-}
-\details{
+This functions adds functionality lacking in data.table and other packages that are concerned with dups
+
+
 do different stuff, yes, that's what happens!
 }
 \examples{
+\dontrun{
 dups(dupstestdata)
+}
 }

@@ -1,15 +1,18 @@
 #' @export
 `%nilike%` <- Negate(data.table::`%ilike%`)
-
+`%!ilike%` <- Negate(data.table::`%ilike%`) # bedre - brug fra nu af. Den anden games for legacy purposes.
+`%!flike%` <- Negate(data.table::`%flike%`)
 
 
 #' @export
  # not in
-`%nin%` <- Negate(`%in%`)
+`%nin%` <- Negate(`%in%`) # gemmes for legacy-purposes
+`%!in%` <- Negate(`%in%`) 
 
 #' @export
   # not like
-`%nlike%` <- Negate(`%like%`)
+`%nlike%` <- Negate(`%like%`) # gemmes for legacy-purposes
+`%!like%` <- Negate(`%like%`) # gemmes for legacy-purposes
 
 #' @export
 `%+%` <- function(x,y) paste0(x, y)
@@ -23,12 +26,17 @@
 
 #' @export
 # not chin (fra data.table)
-`%nchin%` <- Negate(data.table::`%chin%`)
+`%nchin%` <- Negate(data.table::`%chin%`) # gemmes for legacy-purposes
+`%!chin%` <- Negate(data.table::`%chin%`) 
 
 
 #' @export
-`%nbetween%` <- Negate(`%between%`)
+`%nbetween%` <- Negate(data.table::`%between%`) # gemmes for legacy-purposes
+`%!between%` <- Negate(data.table::`%between%`)
 
 
 #' @export
-`%agrepl%` <- function(x,y) agrepl(y, x, ignore.case=TRUE)
+`%alike%` <- function(x,y) agrepl(y, x, ignore.case=TRUE)
+`%!alike%` <- Negate(`%alike%`)
+
+

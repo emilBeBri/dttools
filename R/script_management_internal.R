@@ -15,9 +15,10 @@
 script_management_internal <- function(dir='r/', extension='r') {
     # dir <- 'r/'
     # extension <- 'r'
+    # scriptname='custom-functions'
+    # fs::dir_ls('r')
 
     script <- NULL # programming with data.table
-
   if(!file.exists(dir %+% '00-trash')) {
     dir.create(dir %+% '00-trash')
     warning('00-trash fandtes ikke, laver den')

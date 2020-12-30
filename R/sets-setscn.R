@@ -1,16 +1,18 @@
-
-#' short description 1
+#' list of all the possible sets between two vectors
 #'
-#' @description descriptin 2??
+#' @description list of all the possible sets between two vectors
 #'
-#' @param argument1 arg-description 
+#' @param x the first vector 
+#' @param y the second vector 
 #'
-#'
-#' @return This function returns \code{the url} blah blah blah
+#' @return This function returns a \code{list} with the three types of sets: the \code{intersect} between two vectors, and the sets exclusive for the one or the other vector.
 #' @examples
-#' function(arg1)
+#'\dontrun{
+#' sets(arg1)
+#' }
 #' @export
 
+# #todo# how does this fare with large data.frames? Could you use the f-data.table functions instead
 sets <- function(x, y){
   # output
   list(
@@ -21,18 +23,19 @@ sets <- function(x, y){
 }
 
 
-#' short description 1
+#' list of all the possible sets between two vectors of colnames
 #'
-#' @description descriptin 2??
+#' @description list of all the possible sets between two vectors
 #'
-#' @param argument1 arg-description 
+#' @param x the first data.frame 
+#' @param y the second data.frame
 #'
-#'
-#' @return This function returns \code{the url} blah blah blah
+#' @return This function returns a \code{list} with the three types of sets: the \code{intersect} between two vectors of colnames, and the sets exclusive for the one or the other vector of colnames.
 #' @examples
-#' function(arg1)
+#'\dontrun{
+#' sets(arg1)
+#' }
 #' @export
-
 setscn <- function(x, y){
       # x <- kdf_tmp1
       # y <- kdf

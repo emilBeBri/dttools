@@ -1,21 +1,20 @@
-#' regex a vector or columnnames of data.frame and return only the matches with the regex
+#' search column names based on regex
 #'
-#' regex a vector or columnnames of data.frame and return only the matches with the rege.
+#' @description search column names based on a regex, possibly exclude some elements based on another regex, and include some other elements (not regex but identical). For selection of columns for use in various situations
 #'
-#' regex a vector or columnnames of data.frame and return only the matches with the regex
-#' @param DT a character vector. if a data.frame, uses the colnames
+#' @param DT a character vector. if a data.frame, uses the colnames() to extract a character vector with the colnames
 #' @param x a regex to search for in DT
 #' @param not a regex that will exclude these from argument x. Note that this uses grepl, and since grepl is not vectorized, if several elements are supplied, they are stringed together with '|' in grepl.
-#' @param plus a character vector with specific elements from the string that will be included 
+#' @param plus a character vector with specific elements from the string that will be included. the function will trhow an error if these do not exist in the vector. 
 #' @param ignore.case should cases be ignored? Default is TRUE
 #' @import data.table 
 #' @import assertthat 
 #' @export
 #'
-#'
-#'
 #' @examples
+#'\dontrun{
 #' colc(dupstestdata)
+#' }
 #' @return This function returns a \code{character vector} that matches the regex search pattern  
 
 colc <- function(DT, x=NA, not=NA, plus=NA, ignore.case=TRUE) {

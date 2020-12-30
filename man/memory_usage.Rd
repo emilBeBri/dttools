@@ -7,16 +7,19 @@
 memory_usage(..., n = 10)
 }
 \arguments{
-\item{argument1}{arg-description}
+\item{n}{top n - default is the 10 most memory consuming}
+
+\item{all}{should all the objects be returned? Default is FALSE.}
 }
 \value{
-This function returns \code{the url} blah blah blah
+This function returns a \code{data.table} with memory usage for the objects in the R session
 }
 \description{
 descriptin 2??
 }
 \examples{
 \dontrun{
-function(arg1)
+memory_usage(n=15)
+memory_usage(all=TRUE)
 }
 }

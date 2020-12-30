@@ -2,18 +2,24 @@
 % Please edit documentation in R/setspell-setspell_selected.R
 \name{setspell}
 \alias{setspell}
-\title{short description 1}
+\title{creates spells and run-lengths}
 \usage{
-setspell(DT, v1, idvar = "pnr", place = "")
+setspell(DT, var1, grp, pos = "end")
 }
 \arguments{
-\item{argument1}{arg-description}
+\item{DT}{a data.table}
+
+\item{var1}{variable to calcute run- and spell-lengths on.}
+
+\item{grp}{grouping variables within-which to calculate on}
+
+\item{pos}{where should the variables be located?}
 }
 \value{
-This function returns \code{the url} blah blah blah
+This function creates, by reference, four variables with run- and spell-length-type information.
 }
 \description{
-descriptin 2??
+creates spells and run-lengths, by reference
 }
 \examples{
 \dontrun{

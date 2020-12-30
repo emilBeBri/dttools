@@ -1,61 +1,15 @@
-#' short description 1
+#' save objects with backup 
 #'
-#' @description this is just a copy of utils:::format.object_size(), which is an internal function to the base R utils package. You're not allowed to use internal functions from other packages, i.e. the "..." operator, at least not if you want your package on CRAN. To come around this, I just copied the function here.
+#' @description saves objects in different formats and automatically makes backups. Only tested on data.frames so far (Tue Nov 24 12:37:51 2020)
 #'
-
-
-e_internal_format.object_size <- function (x, units = "b", standard = "auto", digits = 1L, ...) {
-    known_bases <- c(legacy = 1024, IEC = 1024, SI = 1000)
-    known_units <- list(SI = c("B", "kB", "MB", "GB", "TB", "PB", 
-        "EB", "ZB", "YB"), IEC = c("B", "KiB", "MiB", "GiB", 
-        "TiB", "PiB", "EiB", "ZiB", "YiB"), legacy = c("b", "Kb", 
-        "Mb", "Gb", "Tb", "Pb"), LEGACY = c("B", "KB", "MB", 
-        "GB", "TB", "PB"))
-    units <- match.arg(units, c("auto", unique(unlist(known_units), 
-        use.names = FALSE)))
-    standard <- match.arg(standard, c("auto", names(known_bases)))
-    if (is.null(digits)) 
-        digits <- 1L
-    if (standard == "auto") {
-        standard <- "legacy"
-        if (units != "auto") {
-            if (endsWith(units, "iB")) 
-                standard <- "IEC"
-            else if (endsWith(units, "b")) 
-                standard <- "legacy"
-            else if (units == "kB") 
-                stop("For SI units, specify 'standard = \"SI\"'")
-        }
-    }
-    base <- known_bases[[standard]]
-    units_map <- known_units[[standard]]
-    if (units == "auto") {
-        power <- if (x <= 0) 
-            0L
-        else min(as.integer(log(x, base = base)), length(units_map) - 
-            1L)
-    }
-    else {
-        power <- match(toupper(units), toupper(units_map)) - 
-            1L
-        if (is.na(power)) 
-            stop(gettextf("Unit \"%s\" is not part of standard \"%s\"", 
-                sQuote(units), sQuote(standard)), domain = NA)
-    }
-    unit <- units_map[power + 1L]
-    if (power == 0 && standard == "legacy") 
-        unit <- "bytes"
-    paste(round(x/base^power, digits = digits), unit)
-}
-
-
-
-
-#' short description 1
-#'
-#' @description descriptin 2??
-#'
-#' @param argument1 arg-description 
+#' @param DT1 an R object.  
+#' @param filename name of the file. Do not include a fileextension, these will be automatically appended depending on save functions used.  
+#' @param filepath filepath to save to. Default is the name of the saved object.  
+#' @param csv save as csv-file with fwrite.
+#' @param xlsx save as xslx excel-sheet with writexl.
+#' @param fst save as fst-file with fst.
+#' @param qs_preset compression of qs file. One of "fast", "high" (default), "high", "archive", "uncompressed" or "custom". See details in qsave() function from the library(qs).
+#' @param fst_preset compression of fst file. Value in the range 0 to 100, indicating the amount of compression to use. Lower values mean larger file sizes. The default compression is set to 50. See details in fst_write() function from the library(fst).
 #'
 #' @importFrom fst write_fst
 #' @importFrom qs qsave
@@ -70,20 +24,31 @@ e_internal_format.object_size <- function (x, units = "b", standard = "auto", di
 #'}
 #' @export
 
-# #obs#
-# "The use of unexported/internal functions called via ::: is not allowed by CRAN."
-# dvs hvis pakken skal paa CRAN saa skal du uden om at bruge den interne utils:::format.object_size() funktion.
 
-esave <- function(DT1, filename='', filepath='./', csv=TRUE, xlsx=FALSE, fst=TRUE, qs_preset='archive', fst_preset=100){  
-    # DT1 <- copy(kdf)
-    # filepath <- './tmp-data/'
+# test - der var en fejl, men den var der ikke alligevel??
+# save clippings
+# esave(clip_archive, './data/')
+# test1 <- function(DT1, filename='', filepath='./') {
+#   # filepath <- '.'
+#   if(filename == '') filepath2 <- filepath %+% deparse(substitute(DT1))
+#   if(filename != '') filepath2 <- filepath %+% filename
+#   # filepath2 <- filepath %+% deparse(substitute(DT1))
+#   qsave(DT1, filepath2  %+% '.qs', preset='archive')
+# }
+
+# test1(clip_archive, filepath='data/')
+# esave(clip_archive, filepath='data/')
+
+esave <- function(DT1, filename='', filepath='./', csv=FALSE, xlsx=FALSE, fst=FALSE, qs_preset='archive', fst_preset=100){  
+    # DT1 <- copy(clip_archive)
+    # filepath <- './data/'
     # qs_preset='archive'
     # filename=''
-    # filename='test2'
     # fst_preset = 100
     # fst=FALSE
     # xlsx=FALSE
     # csv=FALSE
+  assert_that(filename %!like%  '/' , msg='looks you switched the filename and the filepath argument by mistake , since the filename argument contains a "/", which will lead to errors when writing to file. stopping here.')
 
   # nuvaerende dato i laesevenligt format
   present_date <- as.Date(as.POSIXct(substr(Sys.time(),1,10), format="%Y-%m-%d", tz=Sys.timezone()),tz=Sys.timezone())
