@@ -1,18 +1,29 @@
+
+# not ilike (from data-table)
 #' @export
-`%nilike%` <- Negate(data.table::`%ilike%`)
-`%!ilike%` <- Negate(data.table::`%ilike%`) # bedre - brug fra nu af. Den anden games for legacy purposes.
+`%!ilike%` <- Negate(data.table::`%ilike%`) # better- use from now on. The old one kept for legacy purposes.
+#' @export
+`%nilike%` <- Negate(data.table::`%ilike%`) # kept for legacy purposes
+
+
+# not flike (from data-table)
+#' @export
 `%!flike%` <- Negate(data.table::`%flike%`)
 
-
+ # not-like
 #' @export
+`%!like%` <- Negate(data.table::`%like%`) 
+#' @export
+`%nlike%` <- Negate(data.table::`%like%`) # kept for legacy purposes
+
+
+
  # not in
-`%nin%` <- Negate(`%in%`) # gemmes for legacy-purposes
-`%!in%` <- Negate(`%in%`) 
-
 #' @export
-  # not like
-`%nlike%` <- Negate(`%like%`) # gemmes for legacy-purposes
-`%!like%` <- Negate(`%like%`) # gemmes for legacy-purposes
+`%!in%` <- Negate(`%in%`) 
+#' @export
+`%nin%` <- Negate(`%in%`) # kept for legacy purposes
+
 
 #' @export
 `%+%` <- function(x,y) paste0(x, y)
@@ -24,19 +35,23 @@
 	# https://guillaumepressiat.github.io//blog/2019/01/stringfix
 
 
+# not chin (from data.table)
 #' @export
-# not chin (fra data.table)
-`%nchin%` <- Negate(data.table::`%chin%`) # gemmes for legacy-purposes
 `%!chin%` <- Negate(data.table::`%chin%`) 
-
-
 #' @export
-`%nbetween%` <- Negate(data.table::`%between%`) # gemmes for legacy-purposes
+`%nchin%` <- Negate(data.table::`%chin%`) # kept for legacy purposes
+
+# not-between
+#' @export
 `%!between%` <- Negate(data.table::`%between%`)
+#' @export
+`%nbetween%` <- Negate(data.table::`%between%`) # kept for legacy purposes
 
 
+# fuzzy like and fuzzy not-like
 #' @export
 `%alike%` <- function(x,y) agrepl(y, x, ignore.case=TRUE)
+#' @export
 `%!alike%` <- Negate(`%alike%`)
 
 

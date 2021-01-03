@@ -14,7 +14,7 @@
 #' @import readxl
 #' @import openxlsx
 #' @importFrom purrr map imap keep
-#' @importFrom rlang setnames
+#' @importFrom rlang set_names
 #' @export
 #'
 #'
@@ -77,7 +77,7 @@ v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE, e
   temp_file <- paste0(tempfile(), '.xlsx')
 
 
-  if(engine %nin% c('openxlsx', 'writexl')) stop('engine not supported')
+  if(engine %!in% c('openxlsx', 'writexl')) stop('engine not supported')
 
   if(engine == 'openxlsx'){
     # lav workbook-objekter
