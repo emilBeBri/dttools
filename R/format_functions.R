@@ -1,10 +1,9 @@
 
 
-
 #' @export
 #formatér for at oege laesbarheden
 nrf <- function(df) {
-  format(nrow(df), big.mark='.', decimal.mark=',')
+  euformat(nrow(df))
 }
 
 
@@ -28,9 +27,9 @@ nrf <- function(df) {
 nrf2 <- function(dtx, dty) {
     # dtx <- dup1
     # dty <- dup2
-  x1 <- format(nrow(dtx) - nrow(dty), big.mark='.', decimal.mark=',')
-  x2 <- format(nrow(dtx), big.mark='.', decimal.mark=',')
-  x3 <- format(nrow(dty), big.mark='.', decimal.mark=',')
+  x1 <- euformat(nrow(dtx) - nrow(dty))
+  x2 <- euformat(nrow(dtx))
+  x3 <- euformat(nrow(dty))
   x4 <- pct(nrow(dty) / nrow(dtx))
   message(paste(x1 %+% ' rows,', x4 %+% ' --', 'nrow(df1): ' %+% x2, 'nrow(df2): ' %+% x3, sep=' '))
 } 
@@ -40,31 +39,35 @@ nrf2 <- function(dtx, dty) {
 #' @export
 #formatér for at oege laesbarheden
 pct <- function(df, decimals=2) {
-  format(round(df*100,decimals) %+% ' %',big.mark='.', decimal.mark=',')
+  euformat(round(df*100,decimals) %+% ' %')
 }
+
 
 #' @export
 #formatér for at oege laesbarheden
 # tidligere hed den bare f() - det er uhensigtsmaessigt
 f_pct <- function(df, decimals=2) {
-  format(round(df*100,decimals) %+% ' %',big.mark='.', decimal.mark=',')
+  euformat(round(df*100,decimals) %+% ' %')
 }
 
 
 #' @export
 # numre i EU-format
-eu_format <- function(x) trimws(format(x, big.mark='.',decimal.mark=',', scientific=FALSE))
+eu_format <- function(x) trimws(format(x, big.mark='.',decimal.mark=',', scientific=FALSE)) 
+#' @export
+euformat <- function(x) eu_format(x)
+
 
 #' @export
 # til eyeballing, samme som ovenstaaende - brug ALDRIG i bestandig kode!!
-f <- function(x) trimws(format(x, big.mark='.',decimal.mark=',', scientific=FALSE))
+f <- function(x) euformat(x)
 
 #' @export
 # til eyeballing, samme som ovenstaaende - brug ALDRIG i bestandig kode!!
-f_sum <- function(x) trimws(format(sum(x), big.mark='.',decimal.mark=',', scientific=FALSE))
+f_sum <- function(x) trimws(euformat(sum(x)))
 
 
 #' @export
 # numre med kr bag paa
-dkk_format <- function(x) trimws(format(x, big.mark='.',decimal.mark=',', scientific=FALSE) %+% ' kr.')
+dkk_format <- function(x) trimws(euformat(x) %+% ' kr.')
 

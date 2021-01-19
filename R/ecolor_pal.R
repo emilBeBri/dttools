@@ -1,8 +1,10 @@
-#' short description 1
+#' output colors so that design color choices can be made 
 #'
-#' @description descriptin 2??
+#' @description This function displays colors so that choices can be made 
 #'
-#' @param argument1 arg-description 
+#' @param colorx colors to display 
+#' @param background the color of the background in the plot 
+#' @param size size of label of the color name (if the color has a name in the base-R color() function) 
 #'
 #' @import data.table
 #' @import ggplot2
@@ -20,10 +22,9 @@
 
 ecolor_pal <- function(colorx, background = "light gray", size=16) {
     # colorx <- c('red', 'green',' blue')
-    # col <- val2
     # size=16
-    no <- var1 <- NULL # programming with data.table
-
+    # background <- "light gray"
+    no <- var1 <- ecolor_data <- p2 <- DT1 <- NULL # programming with data.table
 
   # errorcheck
   if( !is.vector(colorx)) stop('this is not a vector')
@@ -45,10 +46,10 @@ ecolor_pal <- function(colorx, background = "light gray", size=16) {
 
 
   # er navnet paa vaerdien i base-Rs farveregister? i saa fald giv navn efter farven istede for hex-value
-  test1 <- DT1[col %in% colors()]  
+  test1 <- DT1[colorx %in% colors()]  
   if(nrow(test1)==nrow(DT1)){
-    e_labels <- DT1$col
-  } else e_labels <- 1:length(col)
+    e_labels <- DT1$colorx
+  } else e_labels <- 1:length(colorx)
 
   p3 <- p2 + scale_x_continuous(breaks=1:nrow(DT1),labels=e_labels)
 

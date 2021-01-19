@@ -1,33 +1,73 @@
-#' convinience funktioner, kraever ikke rigtig dokumentation
+# convinience funktioner, kraever ikke rigtig dokumentation
 
-#' @export
-# NA fjernes automatisk
-esum <- function(x, ...) round(sum(x,na.rm=TRUE), ...)
 
-#' @export
-emean <- function(x, ...) round(mean(x,na.rm=TRUE), ...)
 
+#' sum-function with reasonable defaults
+#' @param x a vector
+#' @param f should the number be formatted for readability?
 #' @export
-# vend om paa x og y i setdiff
+esum <- function(x, f=FALSE, digits=3, ...) {
+  x1 <- round(sum(x,na.rm=TRUE, ...), digits=digits)
+  if( f == TRUE) x1 <- euformat(x1)
+  x1
+} 
+
+#' mean-function with reasonable defaults
+#' @param x a vector
+#' @param f should the number be formatted for readability?
+#' @export
+emean <- function(x, f=FALSE, digits=3, ...) {
+  x1 <- round(mean(x,na.rm=TRUE,  ...), digits=digits)
+  if( f == TRUE) x1 <- euformat(x1)
+  x1
+} 
+emean(1:10)
+
+
+#' turn around x and y in the setdiff function
+#' @param x a vector
+#' @export
 setdiff2 <- function(x,y, ...) setdiff(y,x, ...)
 
-# colnames paa sets
+
+#' takes setdiff on colnames of two dataframes
+#' @param x a dataframe
+#' @param y a dataframe
 #' @export
 setdiffcn <- function(x,y) setdiff(colnames(x),colnames(y))
+
+#' takes setdiff on colnames of two dataframes, but with the y dataframe as the first argument (turns around setdiffcn)
+#' @param x a dataframe
+#' @param y a dataframe
 #' @export
 setdiffcn2 <- function(x,y) setdiff2(colnames(x),colnames(y))
+
+#' takes the union of colnames of two dataframes
+#' @param x a dataframe
+#' @param y a dataframe
 #' @export
 unioncn <- function(x,y) union(colnames(x),colnames(y))
-#' @export
-all.equalcn <- function(x,y) all.equal(colnames(x),colnames(y))
+
+#' checks if the intersection of colnames of two dataframes are.equal.
+#' @param x a dataframe
+#' @param y a dataframe
 #' @export
 intersectcn <- function(x,y) intersect(colnames(x),colnames(y))
 
+#' checks if the colnames of two dataframes are.equal.
+#' @param x a dataframe
+#' @param y a dataframe
+#' @export
+all.equalcn <- function(x,y) all.equal(colnames(x),colnames(y))
 
 
+#' prints the top n of something. 
+#' 
+#' convience function, don't use in stable code
+#' @param x a dataframe
 #' @export
 p <- function(df1, n=40){
-  print(df1,topn=n)
+  print(df1, topn=n)
 } 
 
 #' @export
@@ -53,7 +93,6 @@ nr <- function(df) {
 #'
 #' that's about it
 #'
-#' not sure about this right here
 #' @param dtx A data.frame
 #' @param dty A data.frame
 #' @export

@@ -2,7 +2,7 @@
 #'
 #' @description descriptin 2??
 #'
-#' @param argument1 arg-description 
+#' @param x a vector 
 #'
 #' @importFrom scales percent
 #' @importFrom stats quantile

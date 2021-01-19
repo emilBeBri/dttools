@@ -33,10 +33,7 @@ v2(
 This function opens a \code{data.frame} in a spreadsheet viewer. if asssigned to an object, the data.frame as well as manual changes in the spreadsheet will be saved to that object.
 }
 \description{
-opens data in spreadsheet program
-}
-\details{
-opens data in spreadsheet program
+opens data in spreadsheet program2
 }
 \examples{
 \dontrun{

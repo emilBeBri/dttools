@@ -2,15 +2,20 @@
 % Please edit documentation in R/script_management_internal.R
 \name{script_management_internal}
 \alias{script_management_internal}
-\title{short description 1}
+\title{data.table with names of scripts and possible versions of scripts they belong to.}
 \usage{
 script_management_internal(dir = "r/", extension = "r")
 }
+\arguments{
+\item{dir}{directory to search in}
+
+\item{extension}{extension to look for}
+}
 \value{
-This function returns \code{the url} blah blah blah
+This function returns a \code{data.table} with names of scripts found in the directory specified
 }
 \description{
-descriptin 2??
+data.table with names of scripts and possible versions of scripts they belong to.
 }
 \examples{
 \dontrun{

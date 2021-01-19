@@ -7,7 +7,7 @@
 dtquantile(x, start = 0, slut = 1, interval = 0.05, char = TRUE, na.rm = TRUE)
 }
 \arguments{
-\item{argument1}{arg-description}
+\item{x}{a vector}
 }
 \value{
 This function returns \code{the url} blah blah blah

@@ -2,18 +2,22 @@
 % Please edit documentation in R/ecolor_pal.R
 \name{ecolor_pal}
 \alias{ecolor_pal}
-\title{short description 1}
+\title{output colors so that design color choices can be made}
 \usage{
 ecolor_pal(colorx, background = "light gray", size = 16)
 }
 \arguments{
-\item{argument1}{arg-description}
+\item{colorx}{colors to display}
+
+\item{background}{the color of the background in the plot}
+
+\item{size}{size of label of the color name (if the color has a name in the base-R color() function)}
 }
 \value{
 This function returns \code{the url} blah blah blah
 }
 \description{
-descriptin 2??
+This function displays colors so that choices can be made
 }
 \examples{
 \dontrun{

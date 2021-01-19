@@ -7,7 +7,7 @@
 dt_write_clip(df1, var, n = 10, all = FALSE, sample = TRUE)
 }
 \arguments{
-\item{argument1}{arg-description}
+\item{df}{a dataframe}
 }
 \value{
 This function returns \code{the url} blah blah blah

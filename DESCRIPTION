@@ -1,6 +1,6 @@
 Package: dttools
 Title: Useful Tools Built Around Data.table
-Version: 0.0.1.02
+Version: 0.0.1.03
 Authors@R: 
     person(given = "Emil",
            family = "Begtrup-Bright",

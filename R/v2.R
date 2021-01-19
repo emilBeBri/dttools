@@ -1,8 +1,7 @@
 #' opens data in spreadsheet program
 #'
-#' opens data in spreadsheet program
+#' opens data in spreadsheet program2
 #'
-#' opens data in spreadsheet program
 #' @param data a data.frame
 #' @param filter should there be the autofilter function enabled in the spreadsheet?
 #' @param table as a table?
@@ -32,7 +31,7 @@ v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE, e
     # # test
     # filter <- TRUE
     # table <- TRUE
-    # data <- copy(kdf)
+    # data <- copy(kdf_tmp1)
     # all <- TRUE
     # sample <- FALSE
     # n <- 9000
@@ -58,7 +57,6 @@ v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE, e
   if(all==FALSE) data <- data[1:n,]
   # data
   if(sample==TRUE) data <- data[sample(.N, n)]
-
 
   # data integrity: fix issue of readxl and openxlsx converting type date into type POSixt, and factors into character - part 1
   data_classes_old <- unlist(sapply(data, class))
@@ -160,6 +158,9 @@ v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE, e
 
   data_classes_wrong_type <- data_classes_old2[data_classes_new2 != data_classes_old2]
 
+  # 1.5%%1==0
+  # f_output[, names(data_classes_wrong_type), with=FALSE]
+  # kdf_tmp1[, names(data_classes_wrong_type), with=FALSE]
 
   ##### subsection over #####
 

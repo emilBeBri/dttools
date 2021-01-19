@@ -17,9 +17,6 @@ This function returns an \code{integer} value with the difference in number of r
 \description{
 that's about it
 }
-\details{
-not sure about this right here
-}
 \examples{
 \dontrun{
 nr2(dtx, dtx)

@@ -2,7 +2,7 @@
 #'
 #' @description descriptin 2??
 #'
-#' @param argument1 arg-description 
+#' @param df a dataframe 
 #'
 #' @importFrom clipr write_clip
 #'

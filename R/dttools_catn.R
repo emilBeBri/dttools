@@ -2,7 +2,7 @@
 #'
 #' @description descriptin 2??
 #'
-#' @param argument1 arg-description 
+#' @param dt a data.table 
 #'
 #' @importFrom purrr map
 #' @import data.table

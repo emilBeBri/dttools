@@ -7,7 +7,7 @@
 dttools_catn(dt, varliste)
 }
 \arguments{
-\item{argument1}{arg-description}
+\item{dt}{a data.table}
 }
 \value{
 This function returns \code{the url} blah blah blah

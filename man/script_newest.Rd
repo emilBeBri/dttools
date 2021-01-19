@@ -2,7 +2,7 @@
 % Please edit documentation in R/script_newest.R
 \name{script_newest}
 \alias{script_newest}
-\title{short description 1}
+\title{selects newest version of an R script}
 \usage{
 script_newest(
   scriptname,
@@ -12,11 +12,20 @@ script_newest(
   source = TRUE
 )
 }
+\arguments{
+\item{dir}{directory to search in}
+
+\item{extension}{extension to look for}
+
+\item{path}{should the path be returned or just the script name?}
+
+\item{source}{should the script be sourced? defaults to TRUE}
+}
 \value{
 This function returns \code{the url} blah blah blah
 }
 \description{
-descriptin 2??
+Selects the newest function of an R script, and sources it (default). Makes sourcing a script easier to read than source() in itself, when using some form of scriptnaming where the project-name is also included in the script. Throws an error if several versions of the same scripts exists. Requires a naming convention with
 }
 \examples{
 \dontrun{
