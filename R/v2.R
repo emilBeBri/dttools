@@ -27,17 +27,20 @@
 
 # se i excel ark
 # todo: hvordan haandterer den faktorer? 
+# todo: sæt WriteXLS pakken på også, den har autofiler (og kan måske klare det som den anden pakke ikke kan, måske)
+
+
 v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE, engine='writexl') {
     # # test
+    # data <- copy(a1)
     # filter <- TRUE
     # table <- TRUE
-    # data <- copy(kdf_tmp1)
     # all <- TRUE
     # sample <- FALSE
     # n <- 9000
     # engine='writexl'
 
-  # check if vector
+  # check if vector()
   if(is.vector(data)==TRUE & is.data.frame(data)==FALSE) {
     data <- data.table::data.table(data)
   }  
@@ -98,7 +101,10 @@ v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE, e
   }
   if(engine == 'writexl') writexl::write_xlsx(data, temp_file)
 
+
   system(paste0(open_command,' ',temp_file))
+
+
 
   # system("xdg-open /tmp/Rtmp6iWjEe/file63f27073576e.xlsx")
 
@@ -168,9 +174,12 @@ v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE, e
     warning('A col of type logical had a data entry not in the range of c(1, 2, NA). converted to appropriate type (character or numerical)')
   }
   if(!!length(data_classes_wrong_type)){ 
-    warning('Some cols do not have the same type before than after, check the following cols f or consistency: \n', names(data_classes_wrong_type))
+    warning('Some cols do not have the same type before than after, check the following cols for consistency: \n', 
+      paste(names(data_classes_wrong_type), collapse=' ')
+  )
   }
- f_output # output
+ f_output[] # output
+ # NB! du har aendret det her. Husk det.
 }
 
 

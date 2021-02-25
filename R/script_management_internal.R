@@ -13,31 +13,36 @@
 #'\dontrun{
 #' function(arg1)
 #'}
-#' @export
 
-
-# #todo#
-# use fs-package instead of list.files
 
 script_management_internal <- function(dir='r/', extension='r') {
     # dir <- 'r/'
-    # extension <- 'r'
-    # fs::dir_ls('r')
+    # dir <- '/home/emil/Dropbox/Statistik_neworder/Projekter/testprojekt/r/'
+    # extension <- 'rmd'
+    script <-  NULL # programming with data.table
 
-    script <- NULL # programming with data.table
   if(!file.exists(dir %+% '00-trash')) {
     dir.create(dir %+% '00-trash')
     warning('00-trash fandtes ikke, laver den')
   }
 
-  x <- data.table(script=list.files(dir))
+  # list.files 
+  x <- data.table(script=list.files(dir, pattern='\\.'))
 
-  x1 <- x[grepl(paste0('\\.',extension), script, ignore.case=TRUE)]
+  x1 <- x[grepl(paste0('\\.', extension, '$'), script, ignore.case=TRUE)]
+  assert_that(nrow(x1) > 0, msg='no files found with that extension')
 
-  # makes it possible to see which files are different versions of the same script
-  x1[,  family := gsub('[-]*v[0-9]{1,}\\.[rR]$', '', script)]
-  x1[,  extension := gsub('.*\\.([rR])$', '\\1', script)]
-  x1[, version := gsub('.*(v[0-9]{1,}).*','\\1', script)][]
+
+  # removes the version numbering in order to establish script family name
+  x1[,  family := tolower(gsub('(.*)[-_ ]*v[0-9]{1,}[-_ ]*(.*)', '\\1\\2', script, ignore.case=TRUE))] 
+  # version and extension
+  x1[, version := as.integer(gsub('.*v([0-9]{1,}).*','\\1', script))]
+  x1[,  extension := tolower(gsub('.*\\.(.*)$', '\\1', script))][]
+
   setorder(x1, family, -version, na.last=TRUE)
   x1 # output
 }
+
+
+
+

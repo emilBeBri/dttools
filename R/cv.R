@@ -2,8 +2,6 @@
 #'
 #' @description requires wmctrl to be installed. sudo apt-get install wmctrl in Ubuntu (and perhaps also other debian-based systems) 
 #'
-#' @param argument1 arg-description 
-#'
 #' @return This function returns \code{the url} blah blah blah
 #' @examples
 #'\dontrun{

@@ -4,13 +4,7 @@
 \alias{script_newest}
 \title{selects newest version of an R script}
 \usage{
-script_newest(
-  scriptname,
-  dir = "r/",
-  extension = "r",
-  path = TRUE,
-  source = TRUE
-)
+script_newest(script, dir = "r/", extension = "r", path = TRUE, source = TRUE)
 }
 \arguments{
 \item{dir}{directory to search in}

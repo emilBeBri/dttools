@@ -1,8 +1,9 @@
-#' short description 1
+#' flush previous iterations of an R script
 #'
-#' @description descriptin 2??
+#' @description flush previous iterations of an R script
 #'
-#' @param argument1 arg-description 
+#' @param dir directory to loook for R scripts in 
+#' @param extension which file extension should be used 
 #'
 #' @import data.table
 #'
@@ -17,14 +18,21 @@
 #  fjern gamle versioner af scripts
 script_flush_old <- function(dir='r/', extension='r') {
 
+  # dir <- '/home/emil/Dropbox/Statistik_neworder/Projekter/testprojekt/r/'
+  # extension='rmd'
+
     script <- family <- script <- NULL # programming with data.table
-
-
   x <- script_management_internal(dir=dir, extension=extension)
 
   # catches those that has a version-numbering
-  x1 <- x[grepl(paste0('v[0-9]{1,}', '\\.',extension), script, ignore.case=TRUE)]
+  x1 <- x[grepl(get('extension', envir = parent.env(environment())), script, ignore.case=TRUE)]
+  # x1 <- x[grepl(get('extension', envir = .GlobalEnv), script, ignore.case=TRUE)] # old version left for troubleshooting
+  # x1 <- x[grepl(extension, script, ignore.case=TRUE)] # old version left for troubleshooting
 
+
+  assert_that( nrow(x1) > 0, msg='no files with this extension could be found')
+  x2 <- x1[grepl('v[0-9]{1,}', script, ignore.case=TRUE)]
+  assert_that( nrow(x2) > 0, msg='there are no files with version-numbering that I could find')
 
   # sidste nye script/skrig
   setorder(x1, family, -version, na.last=TRUE)
@@ -39,6 +47,4 @@ script_flush_old <- function(dir='r/', extension='r') {
     if( any(t2) == FALSE) stop('fejl i file.remove - et script blev ikke sendt til trash, tjek hvorfor')
   }
 }
-
-
 

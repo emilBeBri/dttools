@@ -4,16 +4,20 @@
 \alias{setspell}
 \title{creates spells and run-lengths}
 \usage{
-setspell(DT, var1, grp, pos = "end")
+setspell(dtx, grp, var1, pos = "end", max = TRUE)
 }
 \arguments{
-\item{DT}{a data.table}
+\item{dtx}{A data.table}
 
-\item{var1}{variable to calcute run- and spell-lengths on.}
+\item{grp}{Grouping variables within-which to calculate on}
 
-\item{grp}{grouping variables within-which to calculate on}
+\item{var1}{Variable to calcute run- and spell-lengths on.}
 
-\item{pos}{where should the variables be located?}
+\item{pos}{Where should the variables be located in the data.table?}
+
+\item{max}{Should the DT include the max run and spell lengths?}
+
+\item{rename}{Should the spells and run-lengths be named after the original variable or generically named? (mostly used as TRUE with the setspell_selected variable)}
 }
 \value{
 This function creates, by reference, four variables with run- and spell-length-type information.

@@ -2,18 +2,20 @@
 % Please edit documentation in R/script_flush_old.R
 \name{script_flush_old}
 \alias{script_flush_old}
-\title{short description 1}
+\title{flush previous iterations of an R script}
 \usage{
 script_flush_old(dir = "r/", extension = "r")
 }
 \arguments{
-\item{argument1}{arg-description}
+\item{dir}{directory to loook for R scripts in}
+
+\item{extension}{which file extension should be used}
 }
 \value{
 This function returns \code{the url} blah blah blah
 }
 \description{
-descriptin 2??
+flush previous iterations of an R script
 }
 \examples{
 \dontrun{

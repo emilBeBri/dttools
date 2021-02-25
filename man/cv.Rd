@@ -6,9 +6,6 @@
 \usage{
 cv()
 }
-\arguments{
-\item{argument1}{arg-description}
-}
 \value{
 This function returns \code{the url} blah blah blah
 }

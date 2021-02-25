@@ -1,6 +1,6 @@
 Package: dttools
-Title: Useful Tools Built Around Data.table
-Version: 0.0.1.03
+Title: Useful Tools Built Around Data.Table
+Version: 0.0.1.04
 Authors@R: 
     person(given = "Emil",
            family = "Begtrup-Bright",
@@ -14,15 +14,17 @@ LazyData: true
 Suggests: 
     knitr,
     rmarkdown,
-    testthat
+    tinytest
 VignetteBuilder: knitr
 RoxygenNote: 7.1.1
 Imports: 
     rlang,
+    janitor,
     clipr,
     data.table (>= 1.9.8),
     assertthat,
     fst,
+    fs,
     ggplot2,
     grid,
     magrittr,
@@ -35,5 +37,4 @@ Imports:
     scales,
     writexl
 Depends: R (>= 3.5.0) 
-globalVariables(c(":=", "!!", "."))
-
+globalVariables(c(": =", "!!", "."))
