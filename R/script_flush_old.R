@@ -15,13 +15,20 @@
 #' @export
 
 
-#  fjern gamle versioner af scripts
-script_flush_old <- function(dir='r/', extension='r') {
 
+
+#  fjern gamle versioner af scripts
+script_flush_old <- function(dir='r/', extension='r', example=FALSE) {
   # dir <- '/home/emil/Dropbox/Statistik_neworder/Projekter/testprojekt/r/'
   # extension='rmd'
+  # dir <- 'r'
+  # extension <- 'r'
+  script <- family <- script <- slettes <- NULL # programming with data.table
 
-    script <- family <- script <- NULL # programming with data.table
+  # if user forgot '/', ad it to the path
+  if( !grepl('/$', dir) ) dir <- dir %+% '/'
+
+  # x <- dttools:::script_management_internal(dir=dir, extension=extension)
   x <- script_management_internal(dir=dir, extension=extension)
 
   # catches those that has a version-numbering
@@ -37,14 +44,29 @@ script_flush_old <- function(dir='r/', extension='r') {
   # sidste nye script/skrig
   setorder(x1, family, -version, na.last=TRUE)
   nyeste_scripts <- x1[x1[, .I[1], .(family)]$V1]
+
+  # output data.table with the scripts to be erased / not erased 
+  if( example == TRUE){
+
+  x1[, slettes := FALSE]
+  x1[script %!in% nyeste_scripts$script, slettes := TRUE]
+  setcolorder(x1, 'slettes')
   
-  # de versioner skal smides ud: alle andre
-  gamle_versioner <- x1[script %nin% nyeste_scripts$script]
-  if( nrow(gamle_versioner) > 0 ) {  
-    t1 <- file.copy(dir %+% gamle_versioner$script, dir %+% '00-trash', overwrite=TRUE)
-    if(any(t1) == FALSE) stop('fejl i file.copy - et script blev ikke sendt til trash, tjek hvorfor')
-    t2 <- file.remove(dir %+% gamle_versioner$script)
-    if( any(t2) == FALSE) stop('fejl i file.remove - et script blev ikke sendt til trash, tjek hvorfor')
+  return(x1[])
+
+  } else {
+    # de versioner skal smides ud: alle andre
+    gamle_versioner <- x1[script %!in% nyeste_scripts$script]
+    if( nrow(gamle_versioner) > 0 ) {  
+      t1 <- file.copy(dir %+% gamle_versioner$script, dir %+% '00-trash', overwrite=TRUE)
+      if(any(t1) == FALSE) stop('fejl i file.copy - et script blev ikke sendt til trash, tjek hvorfor')
+      t2 <- file.remove(dir %+% gamle_versioner$script)
+      if( any(t2) == FALSE) stop('fejl i file.remove - et script blev ikke sendt til trash, tjek hvorfor')
+    }
   }
 }
+
+
+
+
 

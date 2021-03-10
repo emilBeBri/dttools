@@ -21,6 +21,10 @@ script_management_internal <- function(dir='r/', extension='r') {
     # extension <- 'rmd'
     script <-  NULL # programming with data.table
 
+  # if user forgot '/', ad it to the path
+  if( !grepl('/$', dir) ) dir <- dir %+% '/'
+
+
   if(!file.exists(dir %+% '00-trash')) {
     dir.create(dir %+% '00-trash')
     warning('00-trash fandtes ikke, laver den')
@@ -34,9 +38,9 @@ script_management_internal <- function(dir='r/', extension='r') {
 
 
   # removes the version numbering in order to establish script family name
-  x1[,  family := tolower(gsub('(.*)[-_ ]*v[0-9]{1,}[-_ ]*(.*)', '\\1\\2', script, ignore.case=TRUE))] 
+  x1[,  family := tolower(gsub('(.*)[-_ ]*v[0-9]+[-_ ]*(.*)', '\\1\\2', script, ignore.case=TRUE))] 
   # version and extension
-  x1[, version := as.integer(gsub('.*v([0-9]{1,}).*','\\1', script))]
+  x1[grepl('v[0-9]+', script), version := as.integer(gsub('.*v([0-9]+).*','\\1', script))]
   x1[,  extension := tolower(gsub('.*\\.(.*)$', '\\1', script))][]
 
   setorder(x1, family, -version, na.last=TRUE)

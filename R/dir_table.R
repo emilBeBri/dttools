@@ -16,9 +16,9 @@
 
 
 dir_table <- function (dir='', ...){
-    # dir <- '~/incoming/00-infinit/'
+    # dir <- '~/Dropbox/bibliotek/'
     # programming with data.table
-    file <- size_char <- size <- ext <- only_path <- type <- modification_time <- NULL 
+    name <- file <- size_char <- size <- ext <- only_path <- type <- modification_time <- NULL 
   x1 <- setDT(dir_info(dir, ...))
   # x1 <- setDT(dir_info(dir))
   x1[, file := path_file(path)]
@@ -31,8 +31,13 @@ dir_table <- function (dir='', ...){
   anonfun1 <- Vectorize(function(.x) sum(dir_info(.x, recurse = TRUE)$size))
   x1[type == 'directory', size := anonfun1(path)][]
   x1[, size_char := file_size_formated(size)]
+  # name sans extension
+  x1[file %flike% '.', name := gsub('(.*)\\..*$', '\\1', file)]
+  x1[file %!flike% '.', name := file]
   # ordered by most used
-  setcolorder(x1, qc(path, file, size, size_char, ext, modification_time))
+  setcolorder(x1, qc(path, file, size, size_char, ext, modification_time, name))
   x1[]
 }
+
+
 

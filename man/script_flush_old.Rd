@@ -4,7 +4,7 @@
 \alias{script_flush_old}
 \title{flush previous iterations of an R script}
 \usage{
-script_flush_old(dir = "r/", extension = "r")
+script_flush_old(dir = "r/", extension = "r", example = FALSE)
 }
 \arguments{
 \item{dir}{directory to loook for R scripts in}

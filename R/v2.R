@@ -29,16 +29,18 @@
 # todo: hvordan haandterer den faktorer? 
 # todo: sæt WriteXLS pakken på også, den har autofiler (og kan måske klare det som den anden pakke ikke kan, måske)
 
+# https://www.tadviewer.com/
+
 
 v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE, engine='writexl') {
     # # test
-    # data <- copy(a1)
+    # data <- copy(net2_metrics)
     # filter <- TRUE
     # table <- TRUE
     # all <- TRUE
     # sample <- FALSE
     # n <- 9000
-    # engine='writexl'
+    # engine='tad'
 
   # check if vector()
   if(is.vector(data)==TRUE & is.data.frame(data)==FALSE) {
@@ -70,16 +72,11 @@ v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE, e
     data[, levels(get(.x))]
   })
 
-  # system settings
-  open_command <- switch(Sys.info()[['sysname']],
-    Windows= 'open',
-    Linux  = 'xdg-open',
-    Darwin = 'open')
-  temp_file <- paste0(tempfile(), '.xlsx')
+
+  if(engine %!in% c('openxlsx', 'writexl', 'tad')) stop('engine not supported')
 
 
-  if(engine %!in% c('openxlsx', 'writexl')) stop('engine not supported')
-
+  # openxlsx save to file
   if(engine == 'openxlsx'){
     # lav workbook-objekter
     wb <- openxlsx::createWorkbook()
@@ -96,21 +93,40 @@ v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE, e
     openxlsx::freezePane(wb, 'tmp', firstRow=TRUE)
 
     #gem og aabn
-    openxlsx::saveWorkbook(wb, temp_file)
+    openxlsx::saveWorkbook(wb, tmp_file)
     warning('openxlsx can in rare cases remove text because of encoding issues. be careful that something valuable is not lost.')
   }
-  if(engine == 'writexl') writexl::write_xlsx(data, temp_file)
+  # writexl save to file
+  if(engine == 'writexl') writexl::write_xlsx(data, tmp_file)
 
 
-  system(paste0(open_command,' ',temp_file))
+  # system settings
+  # open with default spreadsheet program
+  if(engine %in% c('openxlsx', 'writexl')) {
+    open_command <- switch(Sys.info()[['sysname']],
+      Windows= 'open',
+      Linux  = 'xdg-open',
+      Darwin = 'open'
+    )
+    tmp_file <- paste0(tempfile(), '.xlsx')
+    system(paste0(open_command,' ',tmp_file))
+  }
+
+  if(engine == 'tad'){
+    tmp_file <- paste0(tempfile(), '.csv')
+    fwrite(data, tmp_file)
+  }
+  
+  if(engine %in% c('tad')) system(paste0('tad',' ',tmp_file))
+
 
 
 
   # system("xdg-open /tmp/Rtmp6iWjEe/file63f27073576e.xlsx")
 
-  # f_output <- data.frame(unclass(readxl::read_xlsx(temp_file)), check.names = FALSE) # data.frame (base-r)
-  # f_output <- readxl::read_xlsx(temp_file) # tibble (ellers tak)
-  f_output <- setDT(readxl::read_xlsx(temp_file)) # data.table
+  # f_output <- data.frame(unclass(readxl::read_xlsx(tmp_file)), check.names = FALSE) # data.frame (base-r)
+  # f_output <- readxl::read_xlsx(tmp_file) # tibble (ellers tak)
+  f_output <- setDT(readxl::read_xlsx(tmp_file)) # data.table
 
   #######  #subsection ######
   # data integrity part2: 
@@ -179,9 +195,5 @@ v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE, e
   )
   }
  f_output[] # output
- # NB! du har aendret det her. Husk det.
 }
-
-
-
 
