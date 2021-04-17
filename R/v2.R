@@ -34,13 +34,13 @@
 
 v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE, engine='writexl') {
     # # test
-    # data <- copy(net2_metrics)
+    # data <- copy(kdf_tmp1)
     # filter <- TRUE
     # table <- TRUE
     # all <- TRUE
     # sample <- FALSE
     # n <- 9000
-    # engine='tad'
+    # engine='writexl'
 
   # check if vector()
   if(is.vector(data)==TRUE & is.data.frame(data)==FALSE) {
@@ -75,7 +75,8 @@ v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE, e
 
   if(engine %!in% c('openxlsx', 'writexl', 'tad')) stop('engine not supported')
 
-
+  # creates temporary file
+  tmp_file <- paste0(tempfile(), '.xlsx')
   # openxlsx save to file
   if(engine == 'openxlsx'){
     # lav workbook-objekter
@@ -108,7 +109,6 @@ v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE, e
       Linux  = 'xdg-open',
       Darwin = 'open'
     )
-    tmp_file <- paste0(tempfile(), '.xlsx')
     system(paste0(open_command,' ',tmp_file))
   }
 
@@ -118,8 +118,6 @@ v2 <- function(data, filter=TRUE, table=TRUE, n=9000, all=FALSE, sample=FALSE, e
   }
   
   if(engine %in% c('tad')) system(paste0('tad',' ',tmp_file))
-
-
 
 
   # system("xdg-open /tmp/Rtmp6iWjEe/file63f27073576e.xlsx")

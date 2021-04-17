@@ -20,14 +20,13 @@
 script_newest <- function(script, dir='r/', extension='r', path=TRUE, source=TRUE) {  
     # dir <- 'r/'
     # extension <- 'r'
-    # script <- 'scriptname'
+    # script <- 'regex'
     # path <- TRUE
  
+  # x <- dttools:::script_management_internal(dir=dir, extension=extension)
   x <- script_management_internal(dir=dir, extension=extension)
 
   x1 <- x[grepl(get('script', envir = parent.env(environment())), family, ignore.case=TRUE)]
-
-
 
   if( nrow(x1) == 0) stop('No script was found')
   if( uniqueN(x1$family) > 1 ) stop('there are two different scripts that matches the regex:', ' \n', paste(x1$family, collapse=' \n'))
